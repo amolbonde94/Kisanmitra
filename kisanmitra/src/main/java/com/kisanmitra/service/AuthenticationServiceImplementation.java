@@ -1,5 +1,7 @@
 package com.kisanmitra.service;
 
+import java.util.List;
+
 import com.kisanmitra.dao.AuthenticationDao;
 import com.kisanmitra.dao.AuthenticationDaoImplementation;
 import com.kisanmitra.dto.User;
@@ -21,6 +23,14 @@ public class AuthenticationServiceImplementation implements AuthenticationServic
 		boolean b =authenticationDao.createUser(user);
 		
 		return b;
+	}
+
+	@Override
+	public List<User> farmerlist(int i) {
+		
+       List<User> temp=authenticationDao.farmerlist(i);
+		
+		return temp;
 	}
 
 }

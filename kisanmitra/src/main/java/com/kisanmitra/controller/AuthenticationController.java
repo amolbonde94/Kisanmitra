@@ -4,6 +4,8 @@ package com.kisanmitra.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -144,7 +146,7 @@ public class AuthenticationController {
 	}
 	
 	@GetMapping("/farmerhomepage")
-	public ModelAndView farmerhome(HttpServletRequest request) {
+	public ModelAndView farmerHome(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("farmer");
@@ -152,13 +154,29 @@ public class AuthenticationController {
 	}
 	
 	@GetMapping("/customerhomepage")
-	public ModelAndView customer(HttpServletRequest request) {
+	public ModelAndView customerHome(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("customer");
 		return mv;
 	}
 	
+	@GetMapping("/farmerlist")
+	public ModelAndView listOfFarmer(HttpServletRequest request) {
+		
+		MyConnection obj = new MyConnection();
+		obj.setJdbcTemplate(jdbcTemplate);
+		
+		int i=1;
+		List<User> farmerlist = authenticationService.farmerlist(i);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("list", farmerlist);
+		
+		
+		mv.setViewName("farmer");
+		
+		return mv;
+	}
 	
 	
 }

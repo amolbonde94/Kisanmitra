@@ -2,7 +2,12 @@ package com.kisanmitra.dao;
 
 
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+
 import org.springframework.stereotype.Component;
+
 
 import com.kisanmitra.connection.MyConnection;
 import com.kisanmitra.dto.User;
@@ -43,6 +48,28 @@ public class AuthenticationDaoImplementation implements AuthenticationDao{
 	public User selectUser(User user) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List farmerlist(int i) {
+		
+		List<User> list=new ArrayList<User>() ;
+		
+		String sql="select user_id,city from user where role_id=1"; 
+		
+		List<Map<String,Object>> temp = obj.getJdbcTemplate().queryForList(sql);
+		
+		for(Map<String,Object> p : temp) {
+			User obj = new User();
+		
+			obj.setUserId(p.get("user_id").toString());
+			obj.setCity(p.get("city").toString());
+			
+			list.add(obj);
+		}
+				
+				
+		return list;
 	}
 
 }
