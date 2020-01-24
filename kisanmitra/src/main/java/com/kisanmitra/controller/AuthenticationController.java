@@ -7,6 +7,7 @@ package com.kisanmitra.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +34,15 @@ public class AuthenticationController {
 	private AuthenticationService authenticationService =new AuthenticationServiceImplementation() ;
 	
 	@GetMapping("/signin")
-	public ModelAndView signinPage(HttpServletRequest request) {
+	public ModelAndView signinPage(HttpServletRequest request,HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 		
 		if(request.getSession().getAttribute("UserName")!=null) {
 			Integer i = (Integer)request.getSession().getAttribute("RollID");
 			if(i==3) 
 			{
+			
+				
 					mv.setViewName("admin");
 				
 			}
@@ -65,7 +68,7 @@ public class AuthenticationController {
 	
 	
 	@PostMapping("/signin")
-	public ModelAndView validateUser(@Valid User user, HttpServletRequest request) {
+	public ModelAndView validateUser(@Valid User user, HttpServletRequest request,HttpServletResponse response) {
 		
 		ModelAndView mv = new ModelAndView();
 		try {
@@ -79,6 +82,7 @@ public class AuthenticationController {
 			request.getSession().setAttribute("RollID",dbuser.getRoleId());
 			if(dbuser.getRoleId()==3) 
 			{
+			
 					mv.setViewName("admin");
 				
 			}
@@ -131,6 +135,7 @@ public class AuthenticationController {
 		boolean b = authenticationService.createUser(user);
 		
 		ModelAndView mv = new ModelAndView();
+		
 		mv.setViewName("signup");
 		
 		
@@ -138,31 +143,50 @@ public class AuthenticationController {
 	}
 	
 	@GetMapping("/signout")
-	public ModelAndView signOut(HttpServletRequest request) {
+	public ModelAndView signOut(HttpServletRequest request,HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 		request.getSession().invalidate();
+		
 		mv.setViewName("signin");
 		return mv;
 	}
 	
 	@GetMapping("/farmerhomepage")
-	public ModelAndView farmerHome(HttpServletRequest request) {
+	public ModelAndView farmerHome(HttpServletRequest request,HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 		
+		if(request.getSession().getAttribute("UserName")!=null)
+		{
+		
 		mv.setViewName("farmer");
+		}
+		else
+			mv.setViewName("signin");
+		
 		return mv;
 	}
 	
 	@GetMapping("/customerhomepage")
-	public ModelAndView customerHome(HttpServletRequest request) {
+	public ModelAndView customerHome(HttpServletRequest request,HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 		
+		
+	
+		if(request.getSession().getAttribute("UserName")!=null)
+		{
+		
 		mv.setViewName("customer");
+		}
+		
+		else 
+			
+			mv.setViewName("signin");
+		
 		return mv;
 	}
 	
 	@GetMapping("/farmerlist")
-	public ModelAndView listOfFarmer(HttpServletRequest request) {
+	public ModelAndView listOfFarmer(HttpServletRequest request,HttpServletResponse response) {
 		
 		MyConnection obj = new MyConnection();
 		obj.setJdbcTemplate(jdbcTemplate);
@@ -172,8 +196,13 @@ public class AuthenticationController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", farmerlist);
 		
+		if(request.getSession().getAttribute("UserName")!=null)
+		{
 		
 		mv.setViewName("farmer");
+		}
+		else
+			mv.setViewName("signin");
 		
 		return mv;
 	}
