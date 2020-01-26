@@ -20,6 +20,8 @@ public class AuthenticationDaoImplementation implements AuthenticationDao{
 	
 	@Override
 	public boolean createUser(User user) {
+		System.out.println(user.getAddress());
+		
 		try {
 			String sql = "insert into user(user_id,first_name,last_name,password,phone,address,city,email_id,isActive,role_id) values (?,?,?,?,?,?,?,?,'yes',?)";
 			
@@ -44,12 +46,24 @@ public class AuthenticationDaoImplementation implements AuthenticationDao{
 		return dbuser;
 	}
 
+	
+
 	@Override
-	public User selectUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean updateUser(User user) {
+		try {
+			
+		String sql="update user set password=? where user_id=?";
+		obj.getJdbcTemplate().update(sql,new Object[] {user.getPassword(),user.getUserId()});
+		
+		return true;
+		}catch(Exception e) {
+			
+			return false;
+		}
 	}
 
+	
+	/*
 	@Override
 	public List farmerlist(int i) {
 		
@@ -71,5 +85,5 @@ public class AuthenticationDaoImplementation implements AuthenticationDao{
 				
 		return list;
 	}
-
+*/
 }

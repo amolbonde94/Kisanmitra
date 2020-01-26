@@ -26,11 +26,11 @@ public class AuthenticationServiceImplementation implements AuthenticationServic
 	}
 
 	@Override
-	public List<User> farmerlist(int i) {
+	public boolean updateUser(User user) {
+		boolean temp=authenticationDao.updateUser(user);
 		
-       List<User> temp=authenticationDao.farmerlist(i);
-		
-		return temp;
+	     return temp;
 	}
+	
 
 }

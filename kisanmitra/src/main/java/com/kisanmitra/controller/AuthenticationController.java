@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,22 +21,27 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kisanmitra.connection.MyConnection;
 import com.kisanmitra.dao.AuthenticationDao;
+import com.kisanmitra.dto.SavedItems;
 import com.kisanmitra.dto.User;
 import com.kisanmitra.service.AuthenticationService;
 import com.kisanmitra.service.AuthenticationServiceImplementation;
+import com.kisanmitra.service.FarmerService;
+import com.kisanmitra.service.FarmerServiceImplementation;
 
 
 @Controller
-public class AuthenticationController {
+public class AuthenticationController implements ErrorController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-	
+	private static final String Path="/error";
 	
 	private AuthenticationService authenticationService =new AuthenticationServiceImplementation() ;
 	
-	@GetMapping("/signin")
+	@GetMapping("/")
 	public ModelAndView signinPage(HttpServletRequest request,HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
+		MyConnection obj = new MyConnection();
+		obj.setJdbcTemplate(jdbcTemplate);
 		
 		if(request.getSession().getAttribute("UserName")!=null) {
 			Integer i = (Integer)request.getSession().getAttribute("RollID");
@@ -80,6 +86,9 @@ public class AuthenticationController {
 		if(dbuser!=null) {
 			request.getSession().setAttribute("UserName",dbuser.getUserId());
 			request.getSession().setAttribute("RollID",dbuser.getRoleId());
+			request.getSession().setAttribute("City",dbuser.getCity());
+			request.getSession().setAttribute("FirstName",dbuser.getFirstName());
+			
 			if(dbuser.getRoleId()==3) 
 			{
 			
@@ -114,7 +123,7 @@ public class AuthenticationController {
 	}
 	
 	
-	@GetMapping("/signup")
+ 	@GetMapping("/signup")
 	 
 	public ModelAndView signUpPage() {
 		MyConnection obj = new MyConnection();
@@ -128,16 +137,21 @@ public class AuthenticationController {
 		return mv;
 	}
 	
+ 	
+ 	
+ 	
 	
+ 	
+ 	
 	@PostMapping("/signup")
-	public ModelAndView registerUserToDb(User user) {
-		
+	public ModelAndView registerUserToDb(@Valid User user, HttpServletRequest request,HttpServletResponse response) {
+		System.out.println(user.getFirstName());
 		boolean b = authenticationService.createUser(user);
-		
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("signup");
+		mv.addObject("name", user.getFirstName());
 		
+		mv.setViewName("successfull");
 		
 		return mv;
 	}
@@ -162,7 +176,7 @@ public class AuthenticationController {
 		}
 		else
 			mv.setViewName("signin");
-		
+		 
 		return mv;
 	}
 	
@@ -185,27 +199,59 @@ public class AuthenticationController {
 		return mv;
 	}
 	
-	@GetMapping("/farmerlist")
-	public ModelAndView listOfFarmer(HttpServletRequest request,HttpServletResponse response) {
+	
+	@GetMapping("/forget")
+	public ModelAndView forgotpage() {
+
+		ModelAndView mvc = new ModelAndView();
+		mvc.setViewName("forget");
 		
+		return mvc;
+	}
+	
+	
+	@PostMapping("/forget")
+	public ModelAndView forgotpage2(User user,HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		
+	
 		MyConnection obj = new MyConnection();
+		
 		obj.setJdbcTemplate(jdbcTemplate);
 		
-		int i=1;
-		List<User> farmerlist = authenticationService.farmerlist(i);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("list", farmerlist);
+		authenticationService.updateUser(user);
 		
-		if(request.getSession().getAttribute("UserName")!=null)
-		{
-		
-		mv.setViewName("farmer");
-		}
-		else
-			mv.setViewName("signin");
-		
+		mv.setViewName("signin");
 		return mv;
 	}
 	
 	
+	@GetMapping(Path)
+	public ModelAndView Error() {
+		ModelAndView mvc = new ModelAndView();
+		mvc.setViewName("errorpage");
+		
+		return mvc;
+	}
+	
+	@PostMapping(Path)
+	public ModelAndView error1() {
+		
+		ModelAndView mvc = new ModelAndView();
+		mvc.setViewName("errorpage");
+		
+		return mvc;
+	}
+
+
+
+	@Override
+	public String getErrorPath() {
+		
+		return Path;
+	}
+
+	
 }
+
+

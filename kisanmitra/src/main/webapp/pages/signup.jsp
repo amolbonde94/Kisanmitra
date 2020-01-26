@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,56 +23,53 @@
 			<div class="col-6">
 
 				<form method="post" action="signup">
-					<div class="form-group">
-						<label for="exampleInputPassword1">First Name</label> 
-						<input
-							type="text" name="firstName" class="form-control" id="exampleInputPassword1">
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Last Name</label> 
-						<input
-							type="text" name="lastName" class="form-control" id="exampleInputPassword1">
-					</div>
-					<div class="form-group">
+					
+				<label for="exampleInputPassword1">First Name</label> 
+				<input type="text" name="firstName" class="form-control" id="exampleInputPassword1" placeholder="Enter First Name" >
+					
+					
+				<label for="exampleInputPassword1">Last Name</label> 
+				<input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Enter Last Name">
+					
+					 
 						<label for="exampleInputPassword1">User Name</label> 
 						<input
-							type="text" name="userId" class="form-control" id="exampleInputPassword1">
-					</div>
+							type="text" name="userId" class="form-control" id="exampleInputPassword1" placeholder="Enter Username">
+					
 					
 					
 				
-					<div class="form-group">
+					
 						<label for="exampleInputPassword1">Password</label> 
 						<input
-							type="password" name="password" class="form-control" id="exampleInputPassword1">
-					</div>
+							type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
 					
-					<div class="form-group">
+					
+				
 						<label for="exampleInputPassword1">Confirm Password</label> 
 						<input
-							typ+e="password" name="cpassword" class="form-control" id="exampleInputPassword1">
-					</div>
+							type="password" name="cpassword" class="form-control" id="exampleInputPassword1" placeholder="Enter Confirm Password">
 					
 					
-					<div class="form-group">
+					
+					
 						<label for="exampleInputEmail1">Email address</label> <input
-							type="email" name="emailId" class="form-control" id="exampleInputEmail1"
+							type="email" name="emailId" class="form-control" id="exampleInputEmail1" placeholder="Enter Email Id"
 							aria-describedby="emailHelp"> 
-					</div>
 					
 					
-					<div class="form-group">
+				
 						<label for="exampleInputPassword1">Mobile</label> 
 						<input
-							type="text" name="phone" class="form-control" id="exampleInputPassword1">
-					</div>
-					<div class="form-group">
+							type="text" name="phone" class="form-control" id="exampleInputPassword1" placeholder="Enter Mobile Number">
+					
+					
 						<label for="exampleInputPassword1">Address</label> 
 						<input
-							type="text" name="address" class="form-control" id="exampleInputPassword1">
-					</div>
+							type="text" name="address" class="form-control" id="exampleInputPassword1" placeholder="Enter Address">
 					
-					<div>
+					
+					
 					<select name="city">
 					<option value=-1>Select City </option>
 					<option value=mumbai>Mumbai </option>
@@ -80,9 +78,9 @@
 					
 					</select>
 					
-					</div>
 					
-					<div>
+					
+					
 					<select name="roleId">
 					<option value=-1>type </option>
 					<option value=1>Farmer </option>
@@ -91,11 +89,11 @@
 					
 					</select>
 					
-					</div>
+					
 					<br>
 					
-					<div><button type="submit" class="btn btn-primary">Submit</button>
-					<a href="signin">              Login here</a></div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+					<a href="/">        Login here</a>
 				</form>
 			</div>
 		</div>

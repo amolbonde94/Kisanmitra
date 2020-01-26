@@ -8,6 +8,7 @@ public interface AuthenticationDao {
 
 	boolean createUser(User user);
 	User loginUser(User user);
-	User selectUser(User user);
-	List<User> farmerlist(int i);
+	
+	boolean updateUser(User user);
+	
 }

@@ -1,15 +1,25 @@
 package com.kisanmitra.dto;
 
-public class User {
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Digits;
+
+public class User {
+    @NotNull
+    @Size(min=4,max=30)
 	private String userId;
 	private String firstName;
 	private String lastName;
 	private String password;
+
 	private String phone;
 	private String address;
 	
 	private String city;
+	@Email
 	private String emailId;
 	private String isActive;
 	private int roleId;
