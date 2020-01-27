@@ -28,15 +28,17 @@ private FarmerService farmerservice=new FarmerServiceImplementation();
 	@GetMapping("/productlist")
 	public ModelAndView listOfFarmer(SavedItems item, HttpServletRequest request,HttpServletResponse response) {
 		
-		System.out.println(item.getProductName());
+		
+		
+		item.setCity(request.getSession().getAttribute("City").toString());
 		MyConnection obj = new MyConnection();
 		obj.setJdbcTemplate(jdbcTemplate);
 		
-         String City = request.getSession().getAttribute("City").toString();
+        /* String City = request.getSession().getAttribute("City").toString(); */
 		
-		List<SavedItems> productlist = farmerservice.productlist(City);
+		List<SavedItems> productlist = farmerservice.productlist(item);
 		
-		
+		System.out.println(productlist.isEmpty());
 		
 		ModelAndView mv = new ModelAndView();
 	

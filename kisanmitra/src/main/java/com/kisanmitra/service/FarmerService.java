@@ -6,6 +6,6 @@ import com.kisanmitra.dto.SavedItems;
 
 public interface FarmerService {
 
-	 List<SavedItems> productlist(String city);
+	 List<SavedItems> productlist(SavedItems item);
 		
 }

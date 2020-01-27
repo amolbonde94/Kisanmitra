@@ -89,6 +89,8 @@ public class AuthenticationController implements ErrorController {
 			request.getSession().setAttribute("City",dbuser.getCity());
 			request.getSession().setAttribute("FirstName",dbuser.getFirstName());
 			
+			System.out.println(dbuser.getCity()+"<------"+dbuser.getUserId());
+			
 			if(dbuser.getRoleId()==3) 
 			{
 			

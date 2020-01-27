@@ -1,5 +1,8 @@
 package com.kisanmitra.dto;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class SavedItems {
 
 	private String entryId;
@@ -7,9 +10,19 @@ public class SavedItems {
 	private String productName;
 	private Integer quantity;
 	private Integer price;
-	private String dateAdded;
+	private Timestamp dateAdded;
+	private String city;
 	
 	
+	
+	
+	
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
 	public String getEntryId() {
 		return entryId;
 	}
@@ -40,10 +53,10 @@ public class SavedItems {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-	public String getDateAdded() {
+	public Timestamp getDateAdded() {
 		return dateAdded;
 	}
-	public void setDateAdded(String dateAdded) {
+	public void setDateAdded(Timestamp dateAdded) {
 		this.dateAdded = dateAdded;
 	}
 	

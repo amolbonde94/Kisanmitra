@@ -27,7 +27,7 @@ int i=1;
    					<form action="productlist">
                         select product : 
 					<select name="productName">
-					<option value=-1>Select City </option>
+					<option value=-1>Select Product </option>
 					<option value=Wheat>Wheat </option>
 					<option value=Potato>Potato </option> 
 					<option value=Tomato>Tomato</option>

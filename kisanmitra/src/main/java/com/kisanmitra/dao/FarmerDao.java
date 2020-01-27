@@ -7,7 +7,7 @@ import com.kisanmitra.dto.User;
 
 public interface FarmerDao {
 
-	 List<SavedItems> productlist(String city);
+	 List<SavedItems> productlist(SavedItems item);
 		
 		
 

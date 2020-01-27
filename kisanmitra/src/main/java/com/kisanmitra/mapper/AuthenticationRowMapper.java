@@ -18,8 +18,8 @@ public class AuthenticationRowMapper implements RowMapper<User>{
 		user.setUserId(rs.getString("user_id"));
 		user.setPassword(rs.getString("password"));
 		user.setRoleId(rs.getInt("role_id"));
-		
-		
+		user.setCity(rs.getString("city"));
+		System.out.println("");
 		return user;
 	}
 	

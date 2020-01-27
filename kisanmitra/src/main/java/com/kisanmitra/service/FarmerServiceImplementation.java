@@ -11,9 +11,9 @@ public class FarmerServiceImplementation implements FarmerService {
 
 	FarmerDao farmerdao = new FarmerDaoImplementation();
 	@Override
-	public List<SavedItems> productlist(String city) {
+	public List<SavedItems> productlist(SavedItems item) {
 		
-		 List<SavedItems> temp= farmerdao.productlist(city);
+		 List<SavedItems> temp= farmerdao.productlist(item);
 			
 			return temp;
 		
