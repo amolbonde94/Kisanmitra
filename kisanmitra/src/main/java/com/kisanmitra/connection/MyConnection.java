@@ -12,13 +12,19 @@ public class MyConnection {
 		
 	}
 
-	public JdbcTemplate getJdbcTemplate() {
+
+
+	public static JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
 
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
+
+
+	public static void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		MyConnection.jdbcTemplate = jdbcTemplate;
 	}
+
+	
 	
 	
 }

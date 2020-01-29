@@ -18,5 +18,21 @@ public class FarmerServiceImplementation implements FarmerService {
 			return temp;
 		
 	}
+	@Override
+	public boolean addproduct(SavedItems item) {
+
+   boolean b =farmerdao.addproduct(item);
+		
+		
+		return b;
+	}
+	@Override
+	public Object[] acntpage(SavedItems item) {
+		Object[] b =farmerdao.acntpage(item);
+		
+		
+		return b;
+	}
+	
 
 }

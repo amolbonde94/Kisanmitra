@@ -1,4 +1,4 @@
-package com.kisanmitra.dao;
+  package com.kisanmitra.dao;
 
 
 
@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
-
+import org.springframework.stereotype.Repository;
 
 import com.kisanmitra.connection.MyConnection;
 import com.kisanmitra.dto.User;
 import com.kisanmitra.mapper.AuthenticationRowMapper;
 
-@Component
+@Repository
 public class AuthenticationDaoImplementation implements AuthenticationDao{
 
 	MyConnection obj = new MyConnection();
@@ -23,9 +23,9 @@ public class AuthenticationDaoImplementation implements AuthenticationDao{
 		System.out.println(user.getAddress());
 		
 		try {
-			String sql = "insert into user(user_id,first_name,last_name,password,phone,address,city,email_id,isActive,role_id) values (?,?,?,?,?,?,?,?,'yes',?)";
+			String sql = "insert into user(user_id,first_name,last_name,password,phone,address,city_id,email_id,isActive,role_id) values (?,?,?,?,?,?,?,?,'yes',?)";
 			
-			obj.getJdbcTemplate().update(sql, new Object[] {user.getUserId(),user.getFirstName(),user.getLastName(),user.getPassword(),user.getPhone(),user.getAddress(),user.getCity(),user.getEmailId(),user.getRoleId()} );
+			obj.getJdbcTemplate().update(sql, new Object[] {user.getUserId(),user.getFirstName(),user.getLastName(),user.getPassword(),user.getPhone(),user.getAddress(),user.getCityId(),user.getEmailId(),user.getRoleId()} );
 			}catch(Exception e) {
 				System.out.println(e.getMessage()+"" +"error");
 			}

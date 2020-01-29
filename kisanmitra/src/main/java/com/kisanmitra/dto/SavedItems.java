@@ -9,19 +9,28 @@ public class SavedItems {
 	private String userId;
 	private String productName;
 	private Integer quantity;
+	
 	private Integer price;
 	private Timestamp dateAdded;
-	private String city;
+	private String city_name;
+	private int city_id;
 	
 	
 	
 	
 	
-	public String getCity() {
-		return city;
+	
+	public String getCity_name() {
+		return city_name;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setCity_name(String city_name) {
+		this.city_name = city_name;
+	}
+	public int getCity_id() {
+		return city_id;
+	}
+	public void setCity_id(int city_id) {
+		this.city_id = city_id;
 	}
 	public String getEntryId() {
 		return entryId;
@@ -29,6 +38,7 @@ public class SavedItems {
 	public void setEntryId(String entryId) {
 		this.entryId = entryId;
 	}
+	
 	public String getUserId() {
 		return userId;
 	}

@@ -14,11 +14,20 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String password;
+    private String city_name;
+	
+	public String getCity_name() {
+		return city_name;
+	}
+
+	public void setCity_name(String city_name) {
+		this.city_name = city_name;
+	}
 
 	private String phone;
 	private String address;
 	
-	private String city;
+	private int cityId;
 	@Email
 	private String emailId;
 	private String isActive;
@@ -76,12 +85,14 @@ public class User {
 		this.address = address;
 	}
 
-	public String getCity() {
-		return city;
+	
+
+	public int getCityId() {
+		return cityId;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setCityId(int cityId) {
+		this.cityId = cityId;
 	}
 
 	public String getEmailId() {

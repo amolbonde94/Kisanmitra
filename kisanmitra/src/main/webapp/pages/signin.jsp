@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <html>
@@ -7,7 +5,7 @@
 <meta charset="UTF-8">
 <title>Login</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/pages/style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -138,53 +136,68 @@ body{
 
 </style>
 
-
 </head>
 <body>
 
-	<div class="row" >
-        
-        <div class="col-12  bg-secondary  text-white" style="height: 60px; display: grid; justify-content: center; font-size: 30px; " >KisanMitra </div>
-        
-    </div> 
-	 
-	 <div>	 
-<div class="login-page">
+  <div class="container-fluid">
 
-	<div class="row  bg-dark">
-		<div class=""></div>
-	</div>
-         <div class="form">
+    <!--title bar-->
+    <div class="row">
+      <div class="col-12  bg-secondary  text-white sticky-top" style="height: 60px; display: grid; justify-content: center; font-size: 30px; " >
+        KisanMitra 
+      </div>
+    </div>
+    <!--form-->
+    <div class="mt-5"></div>
+    <div class="form" style="display: block; margin-left: auto; margin-right: auto;">
             
-            <div class="col-3"></div>
-            <div class="text-light"style="font-size:30px;">Login Form</div> 
-            <div class="col-3"><br></div> 
+      <div class="col-3"></div>
+      <div class="text-light"style="font-size:30px;">Login Form</div> 
+      <div class="col-3"><br></div> 
+     
+       
+       <form class="Login-form" method="post"  onsubmit="return validation()" action="signin">
+       
+           <input type="text" name="userId" class="form-control" id="uId" placeholder="Username" autocomplete="off"/>
+           <span id="uname" class="text-danger font-weight-bold"></span>
+           <input type="password" name="password" class="form-control" id="upass" placeholder="Password" autocomplete="off"/>
+           <span id="pwd" class="text-danger font-weight-bold"></span>
+           <button type="submit" class="btn btn-primary">LOGIN</button><br>
+           <a href="signup">Create New Account</a><br>
+           <a href="forget" style="color:red;font-size:20px">Forgot Password...?</a><br>
            
-             
-             <form class="Login-form" method="post" action="signin">
-             
-                  <input type="text" name="userId" class="form-control" id="exampleInputPassword1" placeholder="Username" />
-                 <input type="text" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
-                <button type="submit" class="btn btn-primary">LOGIN</button><br>
-                 <a href="signup">Create New Account</a><br>
-                 <a href="forget" style="color:red;font-size:20px">Forgotten Password...?</a><br>
-                 
-          
-             </form>
-            
-            
-             
-         </div>
+    
+       </form>
+        
+   </div>
 
+
+  </div>
+  
+  <script>
+    function validation(){
+        var unames=document.getElementById('uId').value;
+        var pass=document.getElementById('upass').value;
+ 
+        if(unames==""){
+            document.getElementById('uname').innerHTML ="*Required";
+            return false;
+        }   
+        if(pass==""){
+            document.getElementById('pwd').innerHTML ="*Required";
+            return false;
+        }
+
+    }
+</script>
+
+<script type = "text/javascript">
+   function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+</script>
 
 </body>
 
 </html>
-
-
-
-
-
-
-
 

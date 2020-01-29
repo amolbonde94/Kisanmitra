@@ -2,10 +2,12 @@ package com.kisanmitra.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.kisanmitra.dao.AuthenticationDao;
 import com.kisanmitra.dao.AuthenticationDaoImplementation;
 import com.kisanmitra.dto.User;
-
+@Service
 public class AuthenticationServiceImplementation implements AuthenticationService {
 
 	private AuthenticationDao authenticationDao=new AuthenticationDaoImplementation();  

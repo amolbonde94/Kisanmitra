@@ -21,10 +21,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kisanmitra.connection.MyConnection;
 import com.kisanmitra.dao.AuthenticationDao;
+import com.kisanmitra.dto.Product;
 import com.kisanmitra.dto.SavedItems;
 import com.kisanmitra.dto.User;
 import com.kisanmitra.service.AuthenticationService;
 import com.kisanmitra.service.AuthenticationServiceImplementation;
+import com.kisanmitra.service.CustomerService;
+import com.kisanmitra.service.CustomerServiceImplementation;
 import com.kisanmitra.service.FarmerService;
 import com.kisanmitra.service.FarmerServiceImplementation;
 
@@ -86,10 +89,10 @@ public class AuthenticationController implements ErrorController {
 		if(dbuser!=null) {
 			request.getSession().setAttribute("UserName",dbuser.getUserId());
 			request.getSession().setAttribute("RollID",dbuser.getRoleId());
-			request.getSession().setAttribute("City",dbuser.getCity());
+			request.getSession().setAttribute("CityId",dbuser.getCityId());
 			request.getSession().setAttribute("FirstName",dbuser.getFirstName());
 			
-			System.out.println(dbuser.getCity()+"<------"+dbuser.getUserId());
+			System.out.println(dbuser.getCityId()+"<------"+dbuser.getUserId());
 			
 			if(dbuser.getRoleId()==3) 
 			{
@@ -104,6 +107,17 @@ public class AuthenticationController implements ErrorController {
 			}
 			else if(dbuser.getRoleId()==2) 
 			{
+				MyConnection conn = new MyConnection();
+				conn.setJdbcTemplate(jdbcTemplate);
+
+				CustomerService customerService = new CustomerServiceImplementation();
+				List<Product> productsDropdownList = customerService.productsDropdown();
+
+				mv.addObject("productList", productsDropdownList);
+				
+				
+				
+				
 				mv.setViewName("customer");
 			}
 			else {
@@ -151,7 +165,7 @@ public class AuthenticationController implements ErrorController {
 		boolean b = authenticationService.createUser(user);
 		ModelAndView mv = new ModelAndView();
 		
-		mv.addObject("name", user.getFirstName());
+		mv.addObject("name", user.getUserId());
 		
 		mv.setViewName("successfull");
 		
