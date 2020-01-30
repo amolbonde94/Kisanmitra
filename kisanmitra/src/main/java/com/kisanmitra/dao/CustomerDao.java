@@ -10,4 +10,5 @@ public interface CustomerDao {
 	List<Product> productsDropdown();
 	List<CurrentStock> showList(Product product);
 	boolean buyList(CurrentStock currentStock);
+	
 }

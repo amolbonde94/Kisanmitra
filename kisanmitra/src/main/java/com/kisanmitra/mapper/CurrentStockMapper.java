@@ -14,6 +14,8 @@ public class CurrentStockMapper implements RowMapper<CurrentStock>{
 		CurrentStock currentStock = new CurrentStock();
 		
 		currentStock.setProductName(rs.getString("product_name"));
+		currentStock.setCustomerUserId(rs.getString("customer_user_id"));
+		currentStock.setProductId(rs.getInt("product_id"));
 		System.out.println(currentStock.getProductName());
 		return currentStock;
 	}

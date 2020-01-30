@@ -98,6 +98,9 @@ public class CustomerController {
 	
 	
 	
+	
+	
+	
 	@PostMapping("/buy")
 	public ModelAndView buyList(CurrentStock currentStock, HttpServletRequest request, HttpServletResponse response) {
 
@@ -120,6 +123,7 @@ public class CustomerController {
 					CustomerService customerService = new CustomerServiceImplementation();
 					boolean b = customerService.buyList(currentStock);
 					if (b) {
+						mv.addObject("bill",currentStock);
 						mv.setViewName("customerorderpage");
 						//mv.setViewName("customer");
 
@@ -134,4 +138,16 @@ public class CustomerController {
 		return mv;
 	}
 
+	
+	
+	@PostMapping("/bill")
+	public ModelAndView billgenerate(Product product,HttpServletRequest request,HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("customerorderpage");
+		return mv;
+	}
+	
+	
+	
 }

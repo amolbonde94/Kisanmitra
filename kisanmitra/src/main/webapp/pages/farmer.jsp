@@ -26,7 +26,7 @@ html {
 
 body {
   font-family: Arial, sans-serif;
- background: url(https://www.thebetterindia.com/wp-content/uploads/2016/05/9421742217_fe6f84e4fe_k-768x434.jpg) no-repeat;
+ background:lightblue;
   background-size: cover;
   height: 100vh;
 }
@@ -141,7 +141,7 @@ tr:nth-child(even) {
 
 a.one:link, a:visited {
   background-color: #f44336;
-  color: white;
+  color: black;
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
@@ -241,9 +241,11 @@ h3 {
 					<option value=Tomato>Tomato</option>
 					<option value=Banana>Banana</option>
 					<option value=Onion>Onion</option> 
+				
+					</select>
 					
-					</select><!-- <a href="productlist"> Show Top 10 Farmer List</a> -->
 					<input type="submit" value="Show Top 10 Farmer">
+					
 					<input type="hidden" name="productJ" value="producName">
 					<br>
 					</form>

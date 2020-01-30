@@ -11,8 +11,17 @@ public class CurrentStock {
 	private String productName;
 	private String farmerUserId;
 	private String customerUserId;
+	private int customerQuantity;
 	
 	
+	public int getCustomerQuantity() {
+		return customerQuantity;
+	}
+
+	public void setCustomerQuantity(int customerQuantity) {
+		this.customerQuantity = customerQuantity;
+	}
+
 	public CurrentStock() {
 		super();
 	}

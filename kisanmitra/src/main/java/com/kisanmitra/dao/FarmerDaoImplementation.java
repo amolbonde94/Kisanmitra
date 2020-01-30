@@ -25,7 +25,7 @@ public class FarmerDaoImplementation implements FarmerDao {
 		List<SavedItems> list = new ArrayList<SavedItems>();
 
 		User user=new User();
-		String sql = "select s.product_name,s.quantity,s.price,s.date_added from saved_stock s,user u where u.user_id=s.user_id AND city_id=? AND product_name=? order by date_added,price limit 0,10";
+		String sql = "select s.product_name,s.quantity,s.price,s.date_added from saved_stock s,user u where u.user_id=s.user_id AND city_id=? AND product_name=? order by price,date_added limit 0,10";
       
 		System.out.println(item.getCity_id());	
 		System.out.println(item.getProductName());		

@@ -10,5 +10,6 @@ public interface CustomerService {
 	List<Product> productsDropdown();
 	List<CurrentStock> showList(Product product);
 	boolean buyList(CurrentStock currentStock);
+	
 
 }

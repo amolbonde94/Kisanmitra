@@ -44,7 +44,7 @@ public class FarmerController {
 				List<SavedItems> productlist = farmerservice.productlist(item);
 				
 				System.out.println(productlist.isEmpty());
-				
+				System.out.println(productlist.isEmpty());
 				mv.addObject("list", productlist);
 		       
 			    mv.setViewName("farmer");
